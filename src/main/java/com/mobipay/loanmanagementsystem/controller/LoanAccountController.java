@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +22,12 @@ public class LoanAccountController {
         this.loanAccountService = loanAccountService;
     }
 
-    @GetMapping("/loanaccount/{loanAccountNumber}")
-    public ResponseEntity<LoanAccount> getLoanAccount(@PathVariable String loanAccountNumber) {
+    @GetMapping("/loanaccount")
+    public ResponseEntity<LoanAccount> getLoanAccount(@RequestParam("loanAccountNumber") String loanAccountNumber) {
         LOGGER.info("Received request to get loan account details for account number: {}", loanAccountNumber);
         LoanAccount loanAccount = loanAccountService.getLoanAccountDetails(loanAccountNumber);
         if (loanAccount != null) {
-            LOGGER.debug("Returning loan account details for account number: {}", loanAccountNumber);
+            LOGGER.info("Returning loan account details for account number: {}", loanAccountNumber);
             return ResponseEntity.ok(loanAccount);
         } else {
             LOGGER.warn("Loan account details not found for account number: {}", loanAccountNumber);

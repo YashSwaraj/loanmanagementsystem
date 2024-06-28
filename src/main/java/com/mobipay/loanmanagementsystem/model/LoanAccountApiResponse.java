@@ -97,8 +97,12 @@ public class LoanAccountApiResponse {
 		public void setLoanEndDate(LocalDate loanEndDate) {
 			this.loanEndDate = loanEndDate;
 		}
-
-        
+		@Override
+		public String toString() {
+			return "LoanDetails [borrowerName=" + borrowerName + ", loanType=" + loanType + ", loanAmount=" + loanAmount
+					+ ", interestRate=" + interestRate + ", loanStartDate=" + loanStartDate + ", loanEndDate="
+					+ loanEndDate + "]";
+		}
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -140,6 +144,16 @@ public class LoanAccountApiResponse {
 		public void setPaymentDate(LocalDate paymentDate) {
 			this.paymentDate = paymentDate;
 		}
-        
+		@Override
+		public String toString() {
+			return "EmiDetails [emiNumber=" + emiNumber + ", dueDate=" + dueDate + ", emiAmount=" + emiAmount
+					+ ", status=" + status + ", paymentDate=" + paymentDate + "]";
+		}
     }
+
+	@Override
+	public String toString() {
+		return "LoanAccountApiResponse [loanAccountNumber=" + loanAccountNumber + ", loanDetails=" + loanDetails
+				+ ", emiDetails=" + emiDetails + ", totalDue=" + totalDue + ", nextDueDate=" + nextDueDate + "]";
+	}
 }

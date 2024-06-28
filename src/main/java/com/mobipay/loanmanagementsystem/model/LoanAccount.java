@@ -43,4 +43,10 @@ public class LoanAccount {
 	public void setEmiAmount(int emiAmount) {
 		this.emiAmount = emiAmount;
 	}
+	
+	@Override
+	public String toString() {
+		return "LoanAccount [id=" + id + ", loanAccountNumber=" + loanAccountNumber + ", dueDate=" + dueDate
+				+ ", emiAmount=" + emiAmount + "]";
+	}
 }

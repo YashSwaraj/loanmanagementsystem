@@ -22,11 +22,13 @@ public class LoanAccountApiIntegration {
     }
 
     public LoanAccountApiResponse fetchLoanAccountDetails(String loanAccountNumber) {
+    	//changing loanAccountNumber for mocked api which only takes the value "1"
+    	loanAccountNumber = "1";
     	String url = externalApiUrl + "/" + loanAccountNumber;
         LOGGER.info("Calling external API for loan account details: {}", url);
         try {
             LoanAccountApiResponse response = restTemplate.getForObject(url, LoanAccountApiResponse.class);
-            LOGGER.debug("External API response: {}", response);
+            LOGGER.info("External API response: {}", response);
             return response;
         } catch (Exception e) {
             LOGGER.error("Error calling external API for loan account number: {}", loanAccountNumber, e);
